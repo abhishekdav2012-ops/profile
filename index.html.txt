@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Abhishek Verma | Academic Portfolio</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a8a; /* Academic Navy */
+            --secondary: #3b82f6; /* Accent Blue */
+            --text-dark: #1f2937; /* Off-black */
+            --text-light: #4b5563; /* Slate Grey */
+            --bg-light: #f8fafc; /* Crisp Light Grey */
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #ffffff;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+        }
+
+        a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Sticky Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        header {
+            padding: 5rem 0 3rem 0;
+            background: linear-gradient(180deg, var(--bg-light) 0%, #ffffff 100%);
+        }
+
+        header .container {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .contact-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .chip {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Section Global Settings */
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        /* Timelines / Timeline Items */
+        .timeline-item {
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--secondary);
+        }
+
+        .time-meta {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .item-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 0.25rem 0;
+        }
+
+        .item-institution {
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Publications Grouping */
+        .pub-category {
+            margin-bottom: 2.5rem;
+        }
+
+        .pub-category h3 {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.25rem;
+        }
+
+        .pub-list {
+            list-style: none;
+        }
+
+        .pub-list li {
+            margin-bottom: 1.25rem;
+            padding-left: 1rem;
+            text-indent: -1rem;
+            font-size: 0.95rem;
+        }
+
+        .pub-author-self {
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        /* References Grid */
+        .ref-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .ref-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 6px;
+        }
+
+        .ref-name {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: #ffffff;
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .contact-chips {
+                justify-content: center;
+            }
+            .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .section-title {
+                text-align: center;
+            }
+            nav .container {
+                flex-direction: column;
+                height: auto;
+                padding: 1rem;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Nav -->
+    <nav>
+        <div class="container">
+            <div class="logo">Abhishek Verma, PhD</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#references">References</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <header>
+        <div class="container">
+            <div class="hero-text">
+                <h1>Dr. Abhishek Verma</h1>
+                <p class="subtitle">International Relations Scholar | PhD in Diplomacy & Disarmament</p>
+                <p>Research Analyst at Manohar Parrikar Institute for Defence Studies and Analyses (MP-IDSA). Specializing in nuclear diplomacy, arms control, and strategic calculations across the Indo-Pacific frameworks.</p>
+                
+                <div class="contact-chips">
+                    <span class="chip">✉️ abhish86_isk@jnu.ac.in</span>
+                    <span class="chip">✉️ abhishekdav2012@gmail.com</span>
+                    <span class="chip">🔗 <a href="https://orcid.org" target="_blank">ORCID Profile</a></span>
+                    <span class="chip">💼 <a href="https://linkedin.com" target="_blank">LinkedIn</a></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Me Section -->
+    <section id="about" class="container">
+        <h2 class="section-title">Research Focus & Expertise</h2>
+        <p>I am a strategic studies researcher focusing on empirical and theoretical architectures of Indian Foreign Policy, nuclear non-proliferation regimes, and China’s strategic maneuvering in South Asia. My recent research models evolving maritime consciousness, cross-border diplomatic challenges, and regional stability metrics across Indo-Pacific containment landscapes.</p>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="container">
+        <h2 class="section-title">Education</h2>
+        
+        <div class="timeline-item">
+            <div class="time-meta">2020 — 2025</div>
+            <div class="item-title">PhD in Diplomacy and Disarmament</div>
+            <div class="item-institution">Jawaharlal Nehru University (JNU), New Delhi</div>
+            <p>Centre for International Politics, Organization and Disarmament (CIPOD). Supervised by Professor Swaran Singh.</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="time-meta">2018 — 2020</div>
+            <div class="item-title">Master of Arts in Politics (Intl. Studies Specialization)</div>
+            <div class="item-institution">School of International Studies (SIS), JNU</div>
+            <p>Graduated with a CGPA of 6.75 (Institutional NIRF Rank #2).</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="time-meta">2013 — 2016</div>
+            <div class="item-title">Bachelor of Commerce (Honors)</div>
+            <div class="item-institution">Hansraj College, Delhi University</div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="container">
+        <h2 class="section-title">Professional Experience</h2>
+
+        <div class="timeline-item">
+            <div class="time-meta">2023 — Present</div>
+            <div class="item-title">Research Analyst</div>
+            <div class="item-institution">Manohar Parrikar Institute for Defence Studies and Analyses (MP-IDSA)</div>
+            <p>Conducting high-level policy review on nuclear security architectures, NPT treaty dynamics, and national threat evaluation criteria.</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="time-meta">Strategic Think-Tank Roles</div>
+            <div class="item-title">Core Member & Research Associate</div>
+            <div class="item-institution">The India Futures & Institute for Asian Crime and Security (IACS)</div>
+            <p>Monitored transnational threat assessments and provided diplomatic reviews concerning historic boundary resolutions.</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="time-meta">Fellowships & Merits</div>
+            <div class="item-title">Junior Research Fellow (JRF)</div>
+            <div class="item-institution">University Grants Commission (UGC-NET)</div>
+            <p>Qualified prestigious national fellowship award administered under Ministry of HRD, Government of India.</p>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="container">
+        <h2 class="section-title">Selected Publications</h2>
+
+        <div class="pub-category">
+            <h3>Peer-Reviewed Journals</h3>
+            <ul class="pub-list">
+                <li><span class="pub-author-self">Verma, A.</span> (2024). "Divergent Perspectives: A Comparative Review of ‘The Nuclear Club’ and ‘Winning and Losing the Nuclear Peace’". <em>Journal of Strategic Security</em>, 17(1), 140-146.</li>
+                <li><span class="pub-author-self">Verma, A.</span> (2023). Book Review: "Inheriting the Bomb: The Collapse of the USSR and Nuclear Disarmament of Ukraine". <em>Strategic Analysis (IDSA Journal)</em>, 47(3).</li>
+                <li>Jamali, A.B., Westcott, S.P. & <span class="pub-author-self">Verma, A.</span> (2023). "Belt and Road Initiative: The Intertwining of China’s Foreign Policy and Economic Nationalism". <em>East Asia Journal</em>.</li>
+                <li><span class="pub-author-self">Verma, A.</span> (2023). Book Review: "Multilateralism in Indo-Pacific: Conceptual and Operational Challenges". <em>Millennial Asia</em>, 14(3).</li>
+            </ul>
+        </div>
+
+        <div class="pub-category">
+            <h3>Books, Chapters & Monographs</h3>
+            <ul class="pub-list">
+                <li>Marwah, R., & <span class="pub-author-self">Verma, A.</span> (2023). "China’s Maneuvers in South Asia." In: S. Singh & R. Marwah (Eds.), <em>China and the Indo-Pacific</em>. Palgrave Macmillan.</li>
+                <li><span class="pub-author-self">Verma, A.</span> (2025). <em>Emerging Nuclear Dynamics in West Asia and North East Asia: Exploring New Proliferation Potential</em> (Monograph). Knowledge World Books.</li>
+                <li><span class="pub-author-self">Verma, A.</span> (2025). "Biological and Toxin Weapons Convention: Evaluating the Review Conferences." In: A. Lele (Ed.), <em>50 Years of Biological Weapons Convention</em>. Pentagon Press.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- References Section -->
+    <section id="references" class="container">
+        <h2 class="section-title">Academic References</h2>
+        <div class="ref-grid">
+            <div class="ref-card">
+                <div class="ref-name">Professor Swaran Singh</div>
+                <p class="text-light">PhD Supervisor</p>
+                <p>School of International Studies, JNU</p>
+                <p>📧 drswaransingh@gmail.com</p>
+            </div>
+            <div class="ref-card">
+                <div class="ref-name">Professor Amitabh Mattoo</div>
+                <p class="text-light">Co-Supervisor / Professor</p>
+                <p>School of International Studies, JNU</p>
+            </div>
+            <div class="ref-card">
+                <div class="ref-name">Professor Rajesh Rajagopalan</div>
+                <p class="text-light">Professor (CIPOD)</p>
+                <p>School of International Studies, JNU</p>
+                <p>📧 rajesh.sis.jnu@gmail.com</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Dr. Abhishek Verma. All Rights Reserved. Built for Academic Advancement.</p>
+    </footer>
+
+</body>
+</html>
